@@ -1,5 +1,5 @@
 //Tile Information ----------------------------------------------------------------------------------------------------------------------------------------
-tile.draconicevolution:xRayBlock.name=透视方块
+tile.draconicevolution:xRayBlock.name=透视之火
 tile.draconicevolution:sunDial.name=日晷
 tile.draconicevolution:weatherController.name=气象控制器
 tile.draconicevolution:draconiumOre.name=龙矿
@@ -12,9 +12,9 @@ tile.draconicevolution:playerDetectorAdvanced.name=高级玩家探测器
 tile.draconicevolution:energyInfuser.name=能量注入器
 tile.draconicevolution:earth.name=地球
 tile.draconicevolution:customSpawner.name=稳定刷怪笼
-tile.draconicevolution:longRangeDislocator.name=长距离传送宝石
-tile.draconicevolution:longRangeDislocator1.name=创造传送宝石
-tile.draconicevolution:longRangeDislocator0.name=长距离传送宝石
+tile.draconicevolution:longRangeDislocator.name=长距离错位宝石
+tile.draconicevolution:longRangeDislocator1.name=创造错位宝石
+tile.draconicevolution:longRangeDislocator0.name=长距离错位宝石
 tile.draconicevolution:generator.name=发电机
 tile.draconicevolution:energyStorageCore.name=能量核心
 tile.draconicevolution:invisibleMultiblock.name=能量核心(隐藏)
@@ -121,9 +121,9 @@ item.draconicevolution:chaosFragment2.name=大混沌片段
 item.draconicevolution:nugget.name=龙粒
 item.draconicevolution:nugget.draconium.name=龙粒
 item.draconicevolution:nugget.awakened.name=觉醒龙粒
-item.draconicevolution:magnet.name=物品传送器
-item.draconicevolution:magnet.wyvern.name=物品传送器
-item.draconicevolution:magnet.draconic.name=觉醒的物品传送器
+item.draconicevolution:magnet.name=物品错位器
+item.draconicevolution:magnet.wyvern.name=物品错位器
+item.draconicevolution:magnet.draconic.name=觉醒物品错位器
 item.draconicevolution:adminSpawnEgg.name=刷怪蛋
 
 //Item Groups ----------------------------------------------------------------------------------------------------------------------------------------
@@ -151,8 +151,8 @@ msg.teleporterEntityDimensional.txt=§c你不能跨维度传送生物！
 msg.teleporterAlreadySet.txt=§c错误：这个传送石只能绑定一个位置！
 msg.teleporterOutOfFuel.txt=§c燃料耗尽! ! !
 msg.teleporterOutOfPearls.txt=§c末影珍珠耗尽! ! !
-msg.teleporterPlayerT1.txt=你需要一个更强大的传送宝石才能这么做
-msg.teleporterPlayerConsent.txt=玩家必须按住潜行(Shift)来同意
+msg.teleporterPlayerT1.txt=你需要一个更强大的传送符咒
+msg.teleporterPlayerConsent.txt=玩家必须用潜行(Shift)同意他们
 msg.spawnerInfo1.txt=生物类型
 msg.spawnerInfo2.txt=需要玩家
 msg.spawnerInfo3.txt=忽视生成条件
@@ -261,7 +261,7 @@ info.de.sword.txt=你敌人的力量使这把剑变得更强了！
 
 info.de.safetyMatch.txt=生出一种不会把你的房子烧光的火
 
-info.draconiumChestInfo1.txt=空手按住Shift+右键
+info.draconiumChestInfo1.txt=空手Shift+右键
 info.draconiumChestInfo2.txt=以访问颜色设置
 
 info.de.capacitorMode.txt=模式
@@ -419,29 +419,29 @@ info.de.forUpgrades.txt=查看有关属性
 info.de.useUpgradeModifier.txt=用升级调整器加强那些属性！
 
 //Lore ----------------------------------------------------------------------------------------------------------------------------------------
-item.draconicevolution:wyvernPickaxe.lore=1普通的镐子太菜了，使用龙力，你能增加开采面积和开采速度
-item.draconicevolution:wyvernShovel.lore=2一次一个方块?不是龙力的风格!\n更快,面积更大,这只是一个开始!
-item.draconicevolution:wyvernSword.lore=1龙力开始解开剑的潜力，剑的范围和攻击力提高了
-item.draconicevolution:wyvernBow.lore=1向一个普通的弓里注入龙力，你会射的更快更强
+item.draconicevolution:wyvernPickaxe.lore=2普通的镐子太菜了\n通过使用龙力，你提升了开采面积和开采速度
+item.draconicevolution:wyvernShovel.lore=2一次一个方块？不是龙力的风格！\n更快、面积更大，这只是一个开始！
+item.draconicevolution:wyvernSword.lore=2龙力开始解放剑的潜力\n剑的范围和攻击力提高了
+item.draconicevolution:wyvernBow.lore=2向普通的弓里注入龙力\n使你能够射得更快、更强
 
-item.draconicevolution:wyvernHelm.lore=1比钻石更强大，现在可以承受更大的打击
-item.draconicevolution:wyvernChest.lore=1用龙力注入的钻石盔甲，大大增强了防御力
-item.draconicevolution:wyvernLeggs.lore=1钻石护腿也注入了龙力，你现在感到更强更快
-item.draconicevolution:wyvernBoots.lore=1你改善了靴子，它似乎让你更加敏捷
+item.draconicevolution:wyvernHelm.lore=2比钻石更强大\n现在你可以承受更强的打击了
+item.draconicevolution:wyvernChest.lore=2通过向盔甲里注入龙力\n你大大增强了它的防御力
+item.draconicevolution:wyvernLeggs.lore=2向钻石护腿中注入龙力后\n你感觉自己进一步变强变快了
+item.draconicevolution:wyvernBoots.lore=2你学会了改良靴子\n龙力似乎让你更加身手敏捷
 
-item.draconicevolution:draconicPickaxe.lore=1细心的研究，让你可以挖更大的区域
-item.draconicevolution:draconicAxe.lore=2经过多次尝试与失败后\n你现在可以一下就砍倒一整棵树
-item.draconicevolution:draconicShovel.lore=1更好的效率，你现在可以挖更大的区域
-item.draconicevolution:draconicHoe.lore=1龙力甚至能改善农业，只需点一下整个农田就能耕好
-item.draconicevolution:draconicSword.lore=1双足飞龙是不错,但龙力武器攻击力更加强大，能击杀更多的敌人
-item.draconicevolution:draconicBow.lore=2完美的距离，更快的射击频率，爆炸性的箭头\n堪比机枪，你还有什么想要的吗?
+item.draconicevolution:draconicPickaxe.lore=2细心的研究\n为你带来了挖掘更大区域的能力
+item.draconicevolution:draconicAxe.lore=2在大量的试错后\n你现在可以一次砍下一整棵树
+item.draconicevolution:draconicShovel.lore=2效率进一步提升\n你现在可以挖更大的区域了
+item.draconicevolution:draconicHoe.lore=2龙力甚至能改善农业\n只需一次点击就能耕好整个农田
+item.draconicevolution:draconicSword.lore=2双足飞龙是不错，但龙力武器\n攻击力更加强大，还能击中更多的敌人
+item.draconicevolution:draconicBow.lore=2顶级的距离，更快的射击频率\n还有爆炸性的箭头，夫复何求？
 
-item.draconicevolution:draconicHelm.lore=1麻麻我再也不怕黑夜啦，你现在无论什么时候都看得见了
-item.draconicevolution:draconicChest.lore=1龙心使得你更强大，拥有了飞行的能力
-item.draconicevolution:draconicLeggs.lore=1更强的装备，龙力灵魂保护着你，使你跑得更快
-item.draconicevolution:draconicBoots.lore=1更强，更快，更好，龙的心脏授予了你跳的更高的权力
+item.draconicevolution:draconicHelm.lore=2畏惧黑夜的日子一去不复返\n你现在无论什么时候都看得见了
+item.draconicevolution:draconicChest.lore=2龙心使你变得更加强大\n还拥有了飞行的能力
+item.draconicevolution:draconicLeggs.lore=2盔甲强度，更上一层楼\n龙的灵魂保护着你，使你跑得更快
+item.draconicevolution:draconicBoots.lore=2更强，更快，更好\n龙的心脏让你能够跳得更高
 
-item.draconicevolution:draconicDistructionStaff.lore=2通过一条又长又艰苦的路后，你发现了真正的力量！\n一个工具就能做所有事：挖矿、战斗和死亡！
+item.draconicevolution:draconicDistructionStaff.lore=2在漫长而艰辛的旅程后，你发现了真正的力量！\n一把工具就能执行一切任务：挖矿、战斗和死亡！
 
 //Entity ----------------------------------------------------------------------------------------------------------------------------------------
 entity.DraconicEvolution.EnderDragon.name=上古末影龙
@@ -453,8 +453,8 @@ key.placeItem=把物品放置到世界里
 key.toolConfig=工具和装甲配置 GUI
 key.toolProfileChange=更改工具配置
 key.toggleFlight=切换创造飞行模式
-key.toggleMagnet=切换磁铁状态
-key.toggleMagnetSelfPickup=开/关磁铁自动拾取
+key.toggleMagnet=开关物品错位器
+key.toggleMagnetSelfPickup=切换磁铁拾取功能
 
 //Damage ----------------------------------------------------------------------------------------------------------------------------------------
 death.attack.chaos=%1$s被混沌守卫撕裂
@@ -465,10 +465,10 @@ death.attack.de.GuardianFireball=%1$s被混沌守卫燃烧炸死
 death.attack.de.GuardianEnergyBall=%1$s像一只小虫子一样被混沌守卫击溃
 death.attack.de.GuardianChaosBall=%1$s被混沌守卫的暗能量覆灭
 
-death.attack.chaosImplosion=%1$s 被拉进一个能量漩涡后湮灭了
-death.attack.chrystalMoved=%1$s 太顽皮而被龙息惩罚了
+death.attack.chaosImplosion=%1$s被拉进一个能量漩涡后泯灭了
+death.attack.chrystalMoved=%1$s太顽皮而被龙之研究惩罚了！
 
-death.attack.administrative.kill=%1$s 被不可阻止的力量打倒了
+death.attack.administrative.kill=%1$s被不可阻止的力量打倒了
 
 //Buttons ----------------------------------------------------------------------------------------------------------------------------------------
 button.de.chestAutoFeed0.txt=关闭.关闭自动补充燃料
@@ -570,7 +570,7 @@ gui.de.particleGenerator.blue.name=蓝：
 gui.de.particleGenerator.motionX.name=移动 X：
 gui.de.particleGenerator.motionY.name=移动 Y：
 gui.de.particleGenerator.motionZ.name=移动 Z：
-gui.de.particleGenerator.scale.name=缩放：
+gui.de.particleGenerator.scale.name=放缩：
 gui.de.particleGenerator.life.name=生命（T）：
 gui.de.particleGenerator.spawnX.name=生成 X：
 gui.de.particleGenerator.spawnY.name=生成 Y：
@@ -599,10 +599,10 @@ gui.de.particleGenerator.saveSettings.name=记录数值
 
 gui.de.particleGenerator.info.1=  粒子发生器是可以让你自由创建粒子特效的装饰性设备。\n  这个设备用起来非常简单，你只要修改界面上的一些字段(变量)就能改变生成的粒子的样式和行为。\n  这个方块仍在开发中，新的特性和粒子可能会在未来的版本中加入。\n  下面的列表包含了所有的字段以及它们的用途。
 gui.de.particleGenerator.info.2=  首先需要关注的是大多数字段后都跟着一个随机值，可以给字段加上一个从0到最大(或者最小)的随机值。\n  -开头的三个字段(红，绿，蓝)控制粒子的颜色。大多数人应该都熟悉这套颜色系统，如果不熟悉的话就百度一下。注意：每个颜色的最大值不能超过255，因此颜色字段限制了随机值。例如如果颜色值被设置为255，而随机值被设置为20，那么实际值永远还是255。
-gui.de.particleGenerator.info.3=  - 接下来的三个字段(移动X，Y，Z）控制粒子的方向和移动速度。\n  -“生存时间”字段设定粒子消失前能存在多久(单位tick)。\n  -“缩放”字段设定粒子的大小。\n  -接下来的三个字段(生成 X，Y，Z)控制粒子的生成位置(相对于粒子发生器的位置)。
+gui.de.particleGenerator.info.3=  - 接下来的三个字段(移动X，Y，Z）控制粒子的方向和移动速度。\n  -“生存时间”字段设定粒子消失前能存在多久(单位tick)。\n  -“放缩”字段设定粒子的大小。\n  -接下来的三个字段(生成 X，Y，Z)控制粒子的生成位置(相对于粒子发生器的位置)。
 gui.de.particleGenerator.info.4=  -“延迟”字段设定每个粒子生成的延迟时间(单位tick)，例如1=20/s，20=1/s，100=1/5s。\n  -“淡出”字段设定粒子消失时的淡出时间(单位tick)。注意：这会加到粒子的生存时间上。\n  -“重力”字段设定粒子如何被重力影响。\n  -“方块碰撞”决定粒子是否会与方块碰撞。\n  -“选择的粒子”可以在不同的可选的粒子间切换。 
 gui.de.particleGenerator.info.5.title=红石控制\n\n
-gui.de.particleGenerator.info.5=  默认情况下需要红石信号来让发生器工作。\n 但如果你空手按住shift并右击发生器，会让它进入反相模式。\n 发生器的8个角上的小方块表示了当前的红石模式。
+gui.de.particleGenerator.info.5=  默认情况下需要红石信号来让发生器工作。\n 然而如果你空手按住shift右击发生器，会让它进入反转模式。\n 发生器的8个角上的小方块表示了当前的红石模式。
 gui.de.particleGenerator.info.6.title=计算机控制\n\n
 gui.de.particleGenerator.info.6=  发生器可以被计算机控制。\n  它提供了一些相对直白的API：\n\n  setGeneratorProperty(property, value)\n  getGeneratorState()\n  resetGeneratorState()
 gui.de.particleGenerator.info.7=  发生器的整体状态可以通过getGeneratorState获得，使用setGeneratorProperty可以一次修改一个属性。属性名字是字符串，而且几乎都与英文版 GUI 上的标签相同。
@@ -671,16 +671,16 @@ gui.de.ShieldRecovery.txt=护甲回复
 gui.de.MoveSpeed.txt=移动速度
 gui.de.JumpBoost.txt=跳跃提升
 
-gui.de.dislocatorInhibitor.range.txt=范围:
+gui.de.dislocatorInhibitor.range.txt=范围：
 gui.de.dislocatorInhibitor.tooltip.range.increase.txt=增加范围
 gui.de.dislocatorInhibitor.tooltip.range.decrease.txt=减少范围
 gui.de.dislocatorInhibitor.tooltip.activity.always.txt=总是激活
 gui.de.dislocatorInhibitor.tooltip.activity.with.txt=红石信号激活
-gui.de.dislocatorInhibitor.tooltip.activity.without.txt=无红石信号激活
-gui.de.dislocatorInhibitor.tooltip.activity.never.txt=永不激活
-gui.de.dislocatorInhibitor.tooltip.activity.cycle.txt=点击切换红石激活模式
-gui.de.dislocatorInhibitor.tooltip.whitelist.txt=过滤器中物品不受磁铁影响
-gui.de.dislocatorInhibitor.tooltip.blacklist.txt=只有过滤器中的物品会受磁铁影响
+gui.de.dislocatorInhibitor.tooltip.activity.without.txt=无红石信号时激活
+gui.de.dislocatorInhibitor.tooltip.activity.never.txt=总是停用
+gui.de.dislocatorInhibitor.tooltip.activity.cycle.txt=点击循环切换激活控制
+gui.de.dislocatorInhibitor.tooltip.whitelist.txt=过滤器内的物品不会被磁铁吸走
+gui.de.dislocatorInhibitor.tooltip.blacklist.txt=只有过滤器里的物品才会被磁铁吸走
 
 //Potions ----------------------------------------------------------------------------------------------------------------------------------------
 potion.de.effect.txt=效果
