@@ -21,7 +21,7 @@ import com.brandon3055.draconicevolution.common.blocks.multiblock.IReactorPart;
 import com.brandon3055.draconicevolution.common.blocks.multiblock.MultiblockHelper.TileLocation;
 import com.brandon3055.draconicevolution.common.handler.ConfigHandler;
 import com.brandon3055.draconicevolution.common.tileentities.multiblocktiles.reactor.TileReactorCore.ReactorState;
-import com.brandon3055.draconicevolution.common.utills.OreDictionaryHelper;
+import com.brandon3055.draconicevolution.common.utils.OreDictionaryHelper;
 import com.brandon3055.draconicevolution.integration.computers.IDEPeripheral;
 
 import cofh.api.energy.IEnergyProvider;
@@ -314,7 +314,11 @@ public class TileReactorStabilizer extends TileEntity
     @Override
     public int getInventoryStackLimit() {
         TileReactorCore core = getMaster();
-        return core.getInventoryStackLimit();
+        if (core != null) {
+            return core.getInventoryStackLimit();
+        } else {
+            return 0;
+        }
     }
 
     @Override

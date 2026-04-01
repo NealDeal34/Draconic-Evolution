@@ -1,5 +1,7 @@
 package com.brandon3055.draconicevolution.common.items.tools.baseclasses;
 
+import static com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil.formatNumber;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +16,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -29,15 +32,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.world.BlockEvent;
 
-import com.brandon3055.brandonscore.common.utills.InfoHelper;
-import com.brandon3055.brandonscore.common.utills.ItemNBTHelper;
-import com.brandon3055.brandonscore.common.utills.Utills;
 import com.brandon3055.draconicevolution.common.handler.ConfigHandler;
 import com.brandon3055.draconicevolution.common.lib.References;
-import com.brandon3055.draconicevolution.common.utills.IConfigurableItem;
-import com.brandon3055.draconicevolution.common.utills.IUpgradableItem;
-import com.brandon3055.draconicevolution.common.utills.ItemConfigField;
-import com.brandon3055.draconicevolution.integration.ModHelper;
+import com.brandon3055.draconicevolution.common.utils.IConfigurableItem;
+import com.brandon3055.draconicevolution.common.utils.IUpgradableItem;
+import com.brandon3055.draconicevolution.common.utils.InfoHelper;
+import com.brandon3055.draconicevolution.common.utils.ItemConfigField;
+import com.brandon3055.draconicevolution.common.utils.ItemNBTHelper;
 
 /**
  * Created by Brandon on 2/01/2015. Modified by bartimaeusnek on 23/05/2018
@@ -176,11 +177,13 @@ public abstract class MiningTool extends ToolBase implements IUpgradableItem {
                 for (int yPos = y + yOffset - yMin; yPos <= y + yOffset + yMax; yPos++) {
                     for (int zPos = z - zMin; zPos <= z + zMax; zPos++) {
                         TileEntity te = player.worldObj.getTileEntity(xPos, yPos, zPos);
-                        if (te != null && !ModHelper.isGregTechTileEntityOre(te)) {
+                        if (te != null) {
                             if (player.worldObj.isRemote) {
                                 player.addChatComponentMessage(new ChatComponentTranslation("msg.de.baseSafeAOW.txt"));
-                            } else((EntityPlayerMP) player).playerNetServerHandler
-                                    .sendPacket(new S23PacketBlockChange(x, y, z, ((EntityPlayerMP) player).worldObj));
+                            } else {
+                                ((EntityPlayerMP) player).playerNetServerHandler
+                                        .sendPacket(new S23PacketBlockChange(x, y, z, player.worldObj));
+                            }
                             return true;
                         }
                     }
@@ -293,8 +296,19 @@ public abstract class MiningTool extends ToolBase implements IUpgradableItem {
 
             block.onBlockHarvested(world, x, y, z, meta, player);
 
-            ArrayList<ItemStack> drops = block
-                    .getDrops(world, x, y, z, meta, EnchantmentHelper.getFortuneModifier(player));
+            ArrayList<ItemStack> drops = new ArrayList<>();
+
+            boolean silkTouchBreak = block.canSilkHarvest(world, player, x, y, z, meta)
+                    && EnchantmentHelper.getSilkTouchModifier(player);
+
+            if (silkTouchBreak) {
+                ItemStack silkTouchDrop = new ItemStack(Item.getItemFromBlock(block), 1, meta);
+                drops.add(silkTouchDrop);
+            } else {
+                int fortuneLevel = EnchantmentHelper.getFortuneModifier(player);
+                drops = block.getDrops(world, x, y, z, meta, fortuneLevel);
+            }
+
             for (ItemStack is : drops) {
                 if (!player.inventory.addItemStackToInventory(is)) {
                     if (world.getGameRules().getGameRuleBooleanValue("doTileDrops") && !world.restoringBlockSnapshots) {
@@ -316,8 +330,11 @@ public abstract class MiningTool extends ToolBase implements IUpgradableItem {
             block.onBlockDestroyedByPlayer(world, x, y, z, meta);
             world.setBlock(x, y, z, Blocks.air, 0, 2);
             player.addExhaustion(-0.025F);
-            if (block.getExpDrop(world, meta, EnchantmentHelper.getFortuneModifier(player)) > 0)
+
+            if (!silkTouchBreak && block.getExpDrop(world, meta, EnchantmentHelper.getFortuneModifier(player)) > 0) {
                 player.addExperience(block.getExpDrop(world, meta, EnchantmentHelper.getFortuneModifier(player)));
+            }
+
             EntityPlayerMP mpPlayer = (EntityPlayerMP) player;
             mpPlayer.playerNetServerHandler.sendPacket(new S23PacketBlockChange(x, y, z, world));
 
@@ -373,39 +390,39 @@ public abstract class MiningTool extends ToolBase implements IUpgradableItem {
                 InfoHelper.ITC() + StatCollector.translateToLocal("gui.de.RFCapacity.txt")
                         + ": "
                         + InfoHelper.HITC()
-                        + Utills.formatNumber(getMaxEnergyStored(stack)));
+                        + formatNumber(getMaxEnergyStored(stack)));
         strings.add(
                 InfoHelper.ITC() + StatCollector.translateToLocal("gui.de.max.txt")
                         + " "
                         + StatCollector.translateToLocal("gui.de.DigAOE.txt")
                         + ": "
                         + InfoHelper.HITC()
-                        + digaoe
+                        + formatNumber(digaoe)
                         + "x"
-                        + digaoe);
+                        + formatNumber(digaoe));
         if (depth > 0) strings.add(
                 InfoHelper.ITC() + StatCollector.translateToLocal("gui.de.max.txt")
                         + " "
                         + StatCollector.translateToLocal("gui.de.DigDepth.txt")
                         + ": "
                         + InfoHelper.HITC()
-                        + depth);
+                        + formatNumber(depth));
         strings.add(
                 InfoHelper.ITC() + StatCollector.translateToLocal("gui.de.max.txt")
                         + " "
                         + StatCollector.translateToLocal("gui.de.DigSpeed.txt")
                         + ": "
                         + InfoHelper.HITC()
-                        + getEfficiency(stack));
+                        + formatNumber(getEfficiency(stack)));
         if (attackaoe > 0) strings.add(
                 InfoHelper.ITC() + StatCollector.translateToLocal("gui.de.max.txt")
                         + " "
                         + StatCollector.translateToLocal("gui.de.AttackAOE.txt")
                         + ": "
                         + InfoHelper.HITC()
-                        + attackaoe
+                        + formatNumber(attackaoe)
                         + "x"
-                        + attackaoe);
+                        + formatNumber(attackaoe));
 
         return strings;
     }

@@ -3,6 +3,7 @@ package com.brandon3055.draconicevolution.common.items.tools;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -23,17 +24,17 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerPickupXpEvent;
 
-import com.brandon3055.brandonscore.common.utills.InfoHelper;
-import com.brandon3055.brandonscore.common.utills.ItemNBTHelper;
 import com.brandon3055.draconicevolution.DraconicEvolution;
 import com.brandon3055.draconicevolution.common.ModItems;
 import com.brandon3055.draconicevolution.common.handler.ConfigHandler;
 import com.brandon3055.draconicevolution.common.items.ItemDE;
 import com.brandon3055.draconicevolution.common.lib.References;
 import com.brandon3055.draconicevolution.common.tileentities.TileDislocatorInhibitor;
-import com.brandon3055.draconicevolution.common.utills.IConfigurableItem;
-import com.brandon3055.draconicevolution.common.utills.InventoryUtils;
-import com.brandon3055.draconicevolution.common.utills.ItemConfigField;
+import com.brandon3055.draconicevolution.common.utils.IConfigurableItem;
+import com.brandon3055.draconicevolution.common.utils.InfoHelper;
+import com.brandon3055.draconicevolution.common.utils.InventoryUtils;
+import com.brandon3055.draconicevolution.common.utils.ItemConfigField;
+import com.brandon3055.draconicevolution.common.utils.ItemNBTHelper;
 import com.brandon3055.draconicevolution.integration.ModHelper;
 import com.gtnewhorizon.gtnhlib.GTNHLib;
 
@@ -146,6 +147,24 @@ public class Magnet extends ItemDE implements IBauble, IConfigurableItem {
                                     == item.getEntityItem().getItemDamage())) {
                 continue;
             }
+
+            int x = (int) Math.floor(item.posX);
+            int y = (int) Math.floor(item.posY);
+            int z = (int) Math.floor(item.posZ);
+
+            boolean skip = false;
+            for (int i = 0; i < 2; i++) {
+                Block block = world.getBlock(x, y - i, z);
+                String blockName = Item.itemRegistry.getNameForObject(Item.getItemFromBlock(block));
+                int meta = world.getBlockMetadata(x, y - i, z);
+                if (ConfigHandler.itemDislocatorBlockBlacklistMap.containsKey(blockName)
+                        && (ConfigHandler.itemDislocatorBlockBlacklistMap.get(blockName) == -1
+                                || ConfigHandler.itemDislocatorBlockBlacklistMap.get(blockName) == meta)) {
+                    skip = true;
+                }
+            }
+
+            if (skip) continue;
 
             if (!skipPlayerCheck) {
                 EntityPlayer closestPlayer = world.getClosestPlayerToEntity(item, range);
